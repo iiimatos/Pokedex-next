@@ -6,13 +6,19 @@ const addCeroToId = (id: number) => {
 };
 
 const pokemonData = async (nameOrId: string) => {
-  const { data: pokemon } = await PokeApi.get<Pokemon>(`/pokemon/${nameOrId}`);
-  return {
-    id: pokemon.id,
-    name: pokemon.name,
-    sprites: pokemon.sprites,
-    types: pokemon.types,
-  };
+  try {
+    const { data: pokemon } = await PokeApi.get<Pokemon>(
+      `/pokemon/${nameOrId}`
+    );
+    return {
+      id: pokemon.id,
+      name: pokemon.name,
+      sprites: pokemon.sprites,
+      types: pokemon.types,
+    };
+  } catch (error) {
+    return null;
+  }
 };
 
 export default { addCeroToId, pokemonData };
