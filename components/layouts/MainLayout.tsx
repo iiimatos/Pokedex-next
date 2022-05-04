@@ -23,7 +23,10 @@ export const MainLayout: FC<Props> = ({ children, title = "Pokemon App" }) => {
           property="og:title"
           content={`Information About the pokemon ${title}`}
         />
-        <meta property="og:In" content={`This is the page about ${title}`} />
+        <meta
+          property="og:description"
+          content={`This is the page about ${title}`}
+        />
         <meta property="og:image" content={`${origin}/img/banner.png`} />
       </Head>
       <Navbar />
