@@ -2,6 +2,7 @@ import { Card, Grid, Row, Text } from "@nextui-org/react";
 import { useRouter } from "next/router";
 import { FC } from "react";
 import { SmallPokemon } from "../../interfaces";
+import { pokemonFunc } from "../../util";
 
 interface Props {
   pokemon: SmallPokemon;
@@ -11,7 +12,7 @@ export const PokemonCard: FC<Props> = ({ pokemon: { id, img, name } }) => {
   const { push } = useRouter();
 
   const onClick = () => {
-    push(`/pokemon/${id}`);
+    push(`/name/${name}`);
   };
 
   return (
@@ -23,7 +24,7 @@ export const PokemonCard: FC<Props> = ({ pokemon: { id, img, name } }) => {
         <Card.Footer>
           <Row justify="space-between">
             <Text transform="capitalize">{name}</Text>
-            <Text>#{id}</Text>
+            <Text>#{pokemonFunc.addCeroToId(id || 0)}</Text>
           </Row>
         </Card.Footer>
       </Card>
